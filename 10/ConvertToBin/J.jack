@@ -1,0 +1,1 @@
+class J { function void main() { while (false) { return; } } }

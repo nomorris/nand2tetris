@@ -1,0 +1,28 @@
+class Random {
+
+   field int seed; // Random seed given at startup
+
+   /** Constructs an array with n random numbers in range mn, mx */
+   function Array range(int seed, int n, int mn, int mx) {
+      var int md, i, r;
+      var Array rnds;
+      let md = mx - mn;
+      let i = 0;
+      let r = seed;
+      let rnds = Array.new(n);
+      while (i < n) {
+          let r = Random.next(r);
+          let rnds[i] = Random.mod(r, md) + mn;
+          let i = i + 1;
+      }
+      return rnds;
+   }
+   
+   function int next(int r) {
+      return Random.mod(119 * r + 127, 256);
+   }
+   
+   function int mod(int a, int b) {
+      return a - (b * (a / b));
+   }
+}

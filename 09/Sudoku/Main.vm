@@ -1,0 +1,14 @@
+function Main.main 1
+push constant 4
+push constant 4
+call Sudoku.new 2
+pop local 0
+push local 0
+push local 0
+call Sudoku.run 2
+pop temp 0
+push local 0
+call Sudoku.dispose 1
+pop temp 0
+push constant 0
+return

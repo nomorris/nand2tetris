@@ -1,0 +1,9 @@
+function J.main 0
+label WHILE_BOOL9
+push constant 0
+not
+if-goto WHILEEND9
+push constant 0
+return
+goto WHILEBOOL9
+label WHILEEND9

@@ -1,0 +1,52 @@
+-- type FxnName   = String
+-- type ListName  = String
+-- type VarName   = String
+-- type ClassName = String
+
+
+
+-- data Keyword = KTrue | KFalse | KThis | KNull  
+-- data FxnType = Constructor | Function | Method  
+-- data UOp     =   Neg | Not
+-- data BOp     =   Add | Sub | Mul | Div | And | Or | Equals | Less | More
+
+-- type FunctionCall = Maybe (Either ClassName VarName) -> FunctionName -> [Expr] -> String 
+
+-- data Expr where 
+  -- EInt      ::                 Int -> Expr
+  -- EString   ::              String -> Expr
+  -- EKey      ::             Keyword -> Expr
+  -- EVar      ::             VarName -> Expr
+  -- EListElem ::   ArrayName -> Expr -> Expr
+  -- EParen    ::                Expr -> Expr
+  -- EUOp      ::         UOp -> Expr -> Expr
+  -- EBOp      :: BOp -> Expr -> Expr -> Expr
+  -- ECall     ::        FunctionCall -> Expr
+  
+-- data Stmt where 
+  -- Let    :: VarName -> Maybe Expr -> Expr -> Stmt 
+  -- If     :: Expr -> [Stmt] -> (Maybe [Stmt]) -> Stmt 
+  -- While  :: Expr -> [Stmt] -> Stmt 
+  -- Do     :: FunctionCall -> Stmt
+  -- Return :: Maybe Expr -> Stmt 
+
+-- data Type where 
+  -- TInt    :: Type 
+  -- TBool   :: Type 
+  -- TChar   :: Type 
+  -- TClass  :: String -> Type 
+
+-- type VarDecl = [(Type, [VarName])]
+
+-- type Function = FxnType -> Maybe Type -> FxnName -> VarDecl -> VarDecl -> [Stmt]
+ 
+
+
+
+-- data Decl where
+  -- Static :: Type -> [VarName] -> Decl 
+  -- Field  :: Type -> [VarName] -> Decl 
+  -- Fxn    :: Fxn -> Either Type Void -> String -> [(Type, String)] -> []
+  
+-- type Class = ClassName -> [Decl]
+-- type Prog = [Class]

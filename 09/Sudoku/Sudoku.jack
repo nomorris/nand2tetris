@@ -1,0 +1,151 @@
+class Sudoku {
+   field Array grid; 
+   field int   xpos;  
+   field int   ypos;  
+                        // 0=none, 1=up, 2=down, 3=left, 4=right
+   constructor Sudoku new(int x, int y) {
+       var int seed;
+       let seed = Keyboard.readInt("Input number below 50: ");
+       let xpos = 4;
+       let ypos = 4;
+       let grid = initGrid(seed);
+       return this;
+   }
+   
+   method int  getXPos() { return xpos; }
+   method int  getYPos() { return ypos; }
+   method void setXPos(int n) { if ((-1 < n) & (9 > n)) { let xpos = n; } return; }
+   method void setYPos(int n) { if ((-1 < n) & (9 > n)) { let ypos = n; } return; }
+   method Array getGrid() { return grid; }
+   method void  setGrid(Array g) { let grid = g; return; }   
+
+   method Array initGrid(int seed) {
+       var Array rnds, g, s;
+       var int i, num;
+       let g = Array.new(81);
+       let rnds = Random.range(seed, 81, 1, 81);
+       let i = 0;
+       while (i < 81) { let g[i] = 0; let i = i + 1; }
+       let i = 0;
+       while (i < 81) {
+           let num = 1 + Random.mod(i, 9);
+           let s = Sudoku.safe(g, rnds[i], num);
+           let g[rnds[i]] = num;   
+           let i = i + 1;
+       }
+       return g;
+   }
+
+   function int safe(Array grid, int idx, int num) {
+       var Array ok;
+       var int i, m, im9, xm9, im3, xm3;
+       let i  = 0;
+       let m = 0;
+       let ok = Array.new(10);
+       while (i < 81) {
+           let im9 = Random.mod(i, 9);
+           let xm9 = Random.mod(idx, 9);
+           let im3 = Random.mod(i, 9) / 3;
+           let xm3 = Random.mod(idx, 9) / 3;
+           if (im9 = xm9) {
+               if ((grid[idx] = grid[i]) & (grid[idx] > 0)) { let ok[grid[i]] = true; }
+           }
+           if ((i / 9) = (idx / 9)) {
+               if ((grid[idx] = grid[i]) & (grid[idx] > 0)) { let ok[grid[i]] = true; }
+           }
+           if (((i / 3) = (idx / 3)) & (im3 = xm3)) {
+               if ((grid[idx] = grid[i]) & (grid[idx] > 0)) { let ok[grid[i]] = true; }
+           }
+           let i = i + 1;
+       }
+       if (ok[num]) { let m = m - num; }
+       do Memory.deAlloc(ok);
+       return num + m;
+   } 
+
+   /** Constructs a new square dance game. */
+   function void game(Array z) {
+      var int sz, x, y, step, l, t, r, bl;
+      var String s;
+      let x = 0; let y = 0;
+      do Screen.clearScreen();
+      let step = 28;
+      let l = 200; let t = 0;
+      let bl = 14;
+      do Screen.setColor(true);
+      while (y < 9) {
+          while (x < 9) {
+              
+           //   do Screen.drawRectangle(step*x+l, step*y+t, step*x+l+bl, step*y+t+bl);
+         //     if (z[9*y+x] > 0) {
+                 do Output.moveCursor(2*x, 2*y);
+//                 do Screen.setColor(false);
+                 let s = String.new(2);
+                 do s.setInt(z[9*y+x]); 
+                 do Output.printString(s);
+                 do Memory.deAlloc(s);
+        //      } 
+              let x = x + 1;
+          }          
+          let y = y + 1;
+          let x = 0;
+      }
+      return;
+   }
+
+   /** Disposes this game. */
+   method void dispose() {
+      do sudoku.dispose();
+      do Memory.deAlloc(this);
+      return;
+   }
+   
+
+
+   /** Runs the game: handles the user's inputs and moves the square accordingly */
+   method void run(Sudoku s) {
+      var char key;  // the key currently pressed by the user
+      var int numAtCursor, x, y;
+      var Array g;
+      let g = s.getGrid();
+      while (true) {
+         // waits for a key to be pressed
+         do Sudoku.game(g);
+         while (key = 0) {
+            let key = Keyboard.keyPressed();
+         }
+         if (key = 49)  { let numAtCursor = 1; }
+         if (key = 50)  { let numAtCursor = 2; }    
+         if (key = 51)  { let numAtCursor = 3; }    
+         if (key = 52)  { let numAtCursor = 4; }    
+         if (key = 53)  { let numAtCursor = 5; }    
+         if (key = 54)  { let numAtCursor = 6; }    
+         if (key = 55)  { let numAtCursor = 7; }    
+         if (key = 56)  { let numAtCursor = 8; }    
+         if (key = 57)  { let numAtCursor = 9; }  
+         
+         if (key = 130) { do s.setXPos(x - 1); }
+         if (key = 131) { do s.setYPos(y - 1); }
+         if (key = 132) { do s.setXPos(x + 1); }
+         if (key = 133) { do s.setYPos(y + 1); }
+         if ((key > 48) & (key < 58)) { 
+            let g[9*x + y] = numAtCursor; 
+         }
+         let x = s.getXPos();
+         let y = s.getYPos();
+         let g = s.getGrid();
+         do Screen.drawRectangle(16 * x, 21 * y, (16 * x) + 6, 21 * (y + 1));
+         
+         
+         
+         // waits for the key to be released
+         while (~(key = 0)) {
+            let key = Keyboard.keyPressed();
+         }
+     } // while
+     return;
+   }
+}
+
+
+

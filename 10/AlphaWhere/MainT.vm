@@ -1,0 +1,25 @@
+function Main.main 1
+call Keyboard.readChar 0
+push constant 77
+sub
+pop local 0
+call Output.println 0
+pop temp 0
+push local 0
+push constant 0
+lt
+if-goto TRUE30
+goto FALSE30
+label TRUE30
+push constant 0
+not
+call Output.printInt 1
+pop temp 0
+goto IF30
+label FALSE30
+push constant 0
+call Output.printInt 1
+pop temp 0
+label IF30
+push constant 0
+return

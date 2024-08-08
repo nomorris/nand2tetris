@@ -1,0 +1,13 @@
+/**
+ * Main class of the Sudoku game.
+ */
+class Main {
+    /** Initializes a Sudoku game and starts running it. */
+    function void main() {
+        var Sudoku sudoku;
+        let sudoku = Sudoku.new(4, 4);
+        do sudoku.run(sudoku);
+        do sudoku.dispose();
+        return;
+    }
+}

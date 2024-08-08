@@ -1,0 +1,59 @@
+function Random.range 4
+push argument 3
+push argument 2
+sub
+pop local 0
+push constant 0
+pop local 1
+push argument 0
+pop local 2
+push argument 1
+call Array.new 1
+pop local 3
+label WHILE_EXP0
+push local 1
+push argument 1
+lt
+not
+if-goto WHILE_END0
+push local 2
+call Random.next 1
+pop local 2
+push local 1
+push local 3
+add
+push local 2
+push local 0
+call Random.mod 2
+push argument 2
+add
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 1
+push constant 1
+add
+pop local 1
+goto WHILE_EXP0
+label WHILE_END0
+push local 3
+return
+function Random.next 0
+push constant 119
+push argument 0
+call Math.multiply 2
+push constant 127
+add
+push constant 256
+call Random.mod 2
+return
+function Random.mod 0
+push argument 0
+push argument 1
+push argument 0
+push argument 1
+call Math.divide 2
+call Math.multiply 2
+sub
+return
