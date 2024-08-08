@@ -1,0 +1,42 @@
+// This file is part of www.nand2tetris.org
+// and the book "The Elements of Computing Systems"
+// by Nisan and Schocken, MIT Press.
+// File name: projects/09/HelloWorld/Main.jack
+
+/** Hello World program. */
+class Main {
+   function void main() {
+      var int x, y;
+      do Output.printString("Hello world!");
+      do Output.println();      // New
+      do Output.printString("Hello world!");
+      do Output.println();      // New
+      do Output.printString("Hello world!");
+      do Output.println();      // New
+      do Output.printString("Hello world!");
+      do Output.println();      // New
+      do Output.printString("Hello world!");
+      do Output.println();      // New
+      do Output.printString("Hello world!");
+      do Output.println();      // New
+      do Output.printString("Hello world!");
+      do Output.println();      // New
+      do Output.printString("Hello world!");
+      do Output.println();      // New
+      do Output.printString("Hello world!");
+      do Output.println();      // New line
+      let x = 0;
+      let y = 0;
+      do Screen.setColor(true);
+      while (y < 9) {
+          while (x < 9) {
+              do Screen.drawRectangle(25*x+220,25*y+30, 25*x+235,25*y+45);
+              let x = x + 1;
+          }
+          let y = y + 1;
+          let x = 0;
+      }
+      
+      return;
+   }
+}
