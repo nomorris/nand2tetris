@@ -1,0 +1,13 @@
+Suppose a version of Tic-Tac-Toe where both players use Xs, and the first to create a line loses. The first move could be here, and play could continue like this. 
+
+XX
+XX
+  X
+  
+Does this mean the second player always wins? Not necessarily. If we don't use the center, six can fit into the grid like so
+
+XX     XX   X X   XXX
+X X   X X   XX    XXX
+ XX   XX     XX   XXX
+ 
+Six is the most that could possibly be placed. Seven Xs would mean two blanks, which would render at most two lines incomplete. For a board with n cells per side, the theoretical maximum is 2n. This has been demonstrated for boards up to n=46, but no general algorithm for doing so exists.

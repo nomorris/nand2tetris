@@ -1,0 +1,27 @@
+// This file is part of www.nand2tetris.org
+// and the book "The Elements of Computing Systems"
+// by Nisan and Schocken, MIT Press.
+// File name: projects/12/Memory.jack
+
+/**
+ * This library provides two services: direct access to the computer's main
+ * memory (RAM), and allocation and recycling of memory blocks. The Hack RAM
+ * consists of 32,768 words, each holding a 16-bit binary number.
+ */ 
+class List {
+    field int ptr;
+    field int data;    
+    field List xs;
+
+    constructor List new(int ptr, int data, List xs) {
+        let ptr  = ptr; 
+        let data = data;
+        let xs   = xs;
+        return this;
+    }
+
+    method List data() { return data; }
+    method List ptr() { return ptr; }
+    method List tail() { return xs; }
+    method List cons(int ptr, int data) { return List.new(ptr, data, this); }
+}
