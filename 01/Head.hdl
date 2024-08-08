@@ -1,0 +1,8 @@
+Chip Head {
+    IN in[16];
+    OUT out;
+    
+    PARTS:
+    Not(in=in[0], out=nout);
+    Not(in=nout, out=out);
+}
