@@ -1,0 +1,129 @@
+PRONOUN
+    I
+    you
+    we 
+    this
+    that
+    
+QUERY
+    who
+    what
+    
+ARTICLE
+    not
+    all
+    many
+    one
+    two
+    
+ADJECTIVE
+    big|small
+    long|*short
+    hot|cold
+    full
+    new
+    good
+    round|*thin
+    dry
+    *far|near
+    *heavy
+    
+    red
+    green
+    yellow
+    white
+    black
+    
+ORGANISM
+    man|woman|person
+    bird
+    dog
+    louse
+    *snake
+    *worm
+    
+    skin|meat
+
+    blood
+    egg
+
+    heart
+    liver
+
+    bone
+    horn
+    tooth
+    claw
+
+    tail
+    head
+    belly
+    neck
+    breasts
+
+    feather|hair
+    ear
+    eye
+    nose
+    mouth
+    tongue
+
+    foot
+    knee
+    hand
+    
+    tree
+    seed
+    leaf
+    root
+    bark
+    
+NOUN
+    sun
+    moon
+    star
+
+    oil
+    water
+    rain
+
+    stone
+    earth (soil)
+
+    sand
+    ash
+    *salt
+
+    cloud
+    smoke
+    *wind
+    fire
+    
+    mountain
+    night
+    
+VERB
+    drink
+    eat
+    bite
+    see
+    hear
+    know
+    sleep
+    die
+    kill
+    swim
+    fly
+    walk
+    come
+    lie (recline)
+    sit
+    stand
+    give
+    say
+    burn
+    
+CONCEPT
+    path
+    name
+    *year
